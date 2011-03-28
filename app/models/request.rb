@@ -35,7 +35,11 @@ class Request < ActiveRecord::Base
 
   def post_data
     # Hash[data_keys, data_values]
-    Hash[raw_body.split("&").collect { |p| p.split '=' }]
+    Hash[raw_body.split("&").collect { |p| p.split '=' }] rescue []
+  end
+
+  def host
+    url.match(/https?:\/\/(.*)\//)[1] rescue nil
   end
 
   def self.method_options

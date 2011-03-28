@@ -1,12 +1,12 @@
 = form_for @request do |f|
-  .request
+  .request.form
     = f.select :method, Request.method_options
     = f.text_field :url
     = f.check_box :redirects
     = f.label :redirects, "Follow redirects?"
 
   .data
-    %h3 Data
+    %h3 Request Data
     - @request.post_data.each do |key, value|
       .post_param
         = text_field_tag "request[data_keys][]", key
@@ -18,6 +18,6 @@
       = text_field_tag "request[data_values][]"
 
   .raw_data
-    %h3 Raw Data
+    %h3 Raw
     = f.text_area :raw_body
   .submit= f.submit "Request", :disable_with => 'Requesting...'

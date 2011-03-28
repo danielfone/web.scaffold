@@ -1,11 +1,13 @@
 !!!
 %html
   %head
-    %title WebScaffold
+    %title
+      web.scaffold
+      = "| #{@request.host}" if @request and @request.host
     = stylesheet_link_tag :all
     = javascript_include_tag :defaults
     = csrf_meta_tag
 
   %body
-    %h1 web.scaffold
-    = yield
+    %h1= link_to "web.scaffold", root_url
+    .content= yield

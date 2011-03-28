@@ -1,1 +1,13 @@
 body { width: 690px; margin: 10px auto; font-family: sans-serif; }
+body { background: #3c64aa url('/images/blueprint_wide.jpg') repeat-x top center; }
+
+h1 { color: #fff; }
+h1 a { color: inherit; text-decoration: none; }
+
+.content { border: 2px solid #ccc; background: #fff; padding: 20px; }
+
+.request.form select { font-size: 20px; }
+.request.form input[type="text"] { padding: 5px; font-size: 14px; width: 450px; border: 1px #ccc solid; }
+.request.form label { color: #aaa; font-size: 10px; cursor: pointer; }
+
+.output { width: 600px; overflow: auto; background: #eee; padding: 0 20px; }
