@@ -1,0 +1,9 @@
+= render "form"
+
+%h2 Request
+.request
+  = pretty_print_requests(@request.sent_headers).html_safe
+
+%h2 Response
+.response
+  = pretty_print_headers(@request.response_headers).html_safe

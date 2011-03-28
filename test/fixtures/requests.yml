@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  method: MyString
+  url: MyString
+  redirects: false
+  params: MyText
+  headers: MyText
+  slug: MyString
+  raw_request: MyText
+  raw_response: MyText
+
+two:
+  method: MyString
+  url: MyString
+  redirects: false
+  params: MyText
+  headers: MyText
+  slug: MyString
+  raw_request: MyText
+  raw_response: MyText

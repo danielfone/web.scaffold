@@ -1,0 +1,7 @@
+= form_for @request do |f|
+  = f.select :method, Request.method_options
+  = f.text_field :url
+  = f.check_box :redirects
+  = f.label :redirects, "Follow redirects?"
+  %br
+  = f.submit "Request", :disable_with => 'Requesting...'
