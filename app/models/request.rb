@@ -1,5 +1,7 @@
 class Request < ActiveRecord::Base
 
+  attr_accessor :data_keys, :data_values
+
   serialize :sent_headers
 
   before_validation :default_url_protocol
@@ -13,17 +15,31 @@ class Request < ActiveRecord::Base
     @curl = Curl::Easy.new(url)
     @curl.follow_location = redirects?
     self.sent_headers = []
-    @curl.on_debug { |type, data| self.sent_headers << data if type == Curl::CURLINFO_HEADER_OUT }
+    @curl.on_debug { |type, data| self.sent_headers << data + "\n" if type == Curl::CURLINFO_HEADER_OUT }
 
-    @curl.http_get
+    execute_curl
 
-    self.response_headers  = @curl.header_str
-    #self.type    = url =~ /(\.js)$/ ? 'js' : @curl.content_type
-    #self.body    = @curl.body_str
+    self.response_headers = @curl.header_str
+    self.response_type    = url =~ /(\.js)$/ ? 'js' : @curl.content_type
+    self.response_body    = @curl.body_str
+  end
+
+  def execute_curl
+    case method
+    when 'GET'
+      @curl.http_get
+    when 'POST'
+      @curl.http_post raw_body
+    end
+  end
+
+  def post_data
+    # Hash[data_keys, data_values]
+    Hash[raw_body.split("&").collect { |p| p.split '=' }]
   end
 
   def self.method_options
-    ['GET']
+    ['GET', 'POST']
   end
 
 end

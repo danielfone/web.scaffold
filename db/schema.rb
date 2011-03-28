@@ -10,21 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110328084838) do
+ActiveRecord::Schema.define(:version => 20110328070933) do
 
   create_table "requests", :force => true do |t|
     t.string   "method"
     t.string   "url"
     t.boolean  "redirects"
-    t.text     "params"
-    t.text     "headers"
+    t.text     "raw_body"
+    t.text     "raw_headers"
+    t.text     "sent_headers"
+    t.text     "response_headers"
+    t.text     "response_body"
+    t.string   "response_type"
     t.string   "slug"
-    t.text     "raw_request"
-    t.text     "raw_response"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "response_headers"
-    t.string   "sent_headers"
   end
 
 end

@@ -1,7 +1,23 @@
 = form_for @request do |f|
-  = f.select :method, Request.method_options
-  = f.text_field :url
-  = f.check_box :redirects
-  = f.label :redirects, "Follow redirects?"
-  %br
-  = f.submit "Request", :disable_with => 'Requesting...'
+  .request
+    = f.select :method, Request.method_options
+    = f.text_field :url
+    = f.check_box :redirects
+    = f.label :redirects, "Follow redirects?"
+
+  .data
+    %h3 Data
+    - @request.post_data.each do |key, value|
+      .post_param
+        = text_field_tag "request[data_keys][]", key
+        \=
+        = text_field_tag "request[data_values][]", value
+    .post_param
+      = text_field_tag "request[data_keys][]"
+      \=
+      = text_field_tag "request[data_values][]"
+
+  .raw_data
+    %h3 Raw Data
+    = f.text_area :raw_body
+  .submit= f.submit "Request", :disable_with => 'Requesting...'

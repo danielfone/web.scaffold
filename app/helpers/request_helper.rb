@@ -1,4 +1,10 @@
 module RequestHelper
+  def colorize(hash = {})
+    tokens  = CodeRay.scan(hash.values.first, hash.keys.first)
+    colored = tokens.html.div.sub('CodeRay', 'highlight')
+    colored.gsub(/(https?:\/\/[^< "']+)/, '<a href="\1" target="_blank">\1</a>')
+  end
+
   def pretty_print(type, content)
     type = type.to_s
 

@@ -31,6 +31,7 @@ GEM
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
+    coderay (0.8.357)
     curb (0.7.8)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -74,6 +75,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coderay
   curb
   haml
   rails (= 3.0.1)
