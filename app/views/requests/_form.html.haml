@@ -5,19 +5,11 @@
     = f.check_box :redirects
     = f.label :redirects, "Follow redirects?"
 
-  .data
-    %h3 Request Data
-    - @request.post_data.each do |key, value|
-      .post_param
-        = text_field_tag "request[data_keys][]", key
-        \=
-        = text_field_tag "request[data_values][]", value
-    .post_param
-      = text_field_tag "request[data_keys][]"
-      \=
-      = text_field_tag "request[data_values][]"
-
-  .raw_data
-    %h3 Raw
-    = f.text_area :raw_body
+  .request.data.tabs
+    %ul
+      %li.tab.selected= link_to 'Post Data', '#post_data'
+      %li.tab= link_to 'Raw', '#raw_data'
+    #post_data.pane.selected= render "post_data"
+    #raw_data.pane= f.text_area :raw_body
+    
   .submit= f.submit "Request", :disable_with => 'Requesting...'

@@ -4,10 +4,30 @@ body { background: #3c64aa url('/images/blueprint_wide.jpg') repeat-x top center
 h1 { color: #fff; }
 h1 a { color: inherit; text-decoration: none; }
 
+.request.age { color: #ccc; margin-top: 0; font-size: small; text-align: right; margin-bottom: 10px; margin-top: -10px; }
+
 .content { border: 2px solid #ccc; background: #fff; padding: 20px; }
 
-.request.form select { font-size: 20px; }
-.request.form input[type="text"] { padding: 5px; font-size: 14px; width: 450px; border: 1px #ccc solid; }
-.request.form label { color: #aaa; font-size: 10px; cursor: pointer; }
+.hide { display: none; }
 
-.output { width: 600px; overflow: auto; background: #eee; padding: 0 20px; }
+input[type="text"] { padding: 5px; font-size: 14px; border: 1px #ccc solid; }
+
+.request.form select { font-size: 20px; }
+.request.form input[type="text"] { width: 450px;  }
+.request.form label { color: #aaa; font-size: 10px; cursor: pointer; }
+textarea { width: 600px; border: 1px #ccc solid; }
+
+/* tabs */
+.tabs ul { height: 32px; list-style: none; margin: 0; padding: 0 20px; border-bottom: 1px solid; }
+.tabs .tab a { font-size: 16px; float: left; padding: 0.25em 1em; margin: 5px 10px -1px 0; border: 1px solid; border-bottom: none; height: 18px; text-decoration: none; }
+.tabs .tab.selected a { border-bottom: solid 1px; cursor: default; }
+.tabs .pane { display:none; }
+.tabs .pane.selected { display: block; }
+.tabs .pane { width: 624px; overflow: auto; padding: 10px; border: 1px solid; border-top-style: none ;}
+/* tab colours */
+.tabs ul { border-bottom-color: #ccc; }
+.tabs .tab a { border-color: #ccc; color: #3c64aa; }
+.tabs .tab.selected a { border-bottom-color: #f7f7f7; background: #f7f7f7; }
+.tabs .tab a:hover { background: #3c64aa; color: #fff; }
+.tabs .tab.selected a:hover { background: #f7f7f7; color: #3c64aa; }
+.tabs .pane { background: #f7f7f7; border-color: #ccc; }

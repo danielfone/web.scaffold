@@ -39,7 +39,7 @@ class Request < ActiveRecord::Base
   end
 
   def host
-    url.match(/https?:\/\/(.*)\//)[1] rescue nil
+    url.match(/https?:\/\/([^\/]+)/)[1] rescue nil
   end
 
   def self.method_options

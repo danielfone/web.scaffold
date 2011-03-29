@@ -1,0 +1,9 @@
+- @request.post_data.each do |key, value|
+  .post_param
+    = text_field_tag "request[data_keys][]", key
+    \=
+    = text_field_tag "request[data_values][]", value
+.post_param
+  = text_field_tag "request[data_keys][]"
+  \=
+  = text_field_tag "request[data_values][]"

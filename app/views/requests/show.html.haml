@@ -1,10 +1,15 @@
+.request.age requested #{time_ago_in_words @request.updated_at} ago
 = render "form"
 
-%h2 Request
-.request.output
-  = pretty_print_requests(@request.sent_headers).html_safe
+=link_to "clear", new_request_path
 
-%h2 Response
-.response.output
-  = pretty_print_headers(@request.response_headers).html_safe
-  = pretty_print(@request.response_type, @request.response_body).html_safe
+.tabs
+  %ul
+    %li.tab= link_to 'Request', '#request'
+    %li.tab.selected= link_to 'Response', '#response'
+
+  #request.pane
+    = pretty_print_requests(@request.sent_headers).html_safe
+  #response.pane.selected
+    = pretty_print_headers(@request.response_headers).html_safe
+    = pretty_print(@request.response_type, @request.response_body).html_safe
