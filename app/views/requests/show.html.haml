@@ -1,8 +1,6 @@
 .request.age requested #{time_ago_in_words @request.updated_at} ago
 = render "form"
 
-=link_to "clear", new_request_path
-
 .tabs
   %ul
     %li.tab= link_to 'Request', '#request'
