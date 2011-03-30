@@ -1,4 +1,10 @@
-body { width: 690px; margin: 10px auto; font-family: sans-serif; }
+/* page width */
+body { width: 690px; }
+.request.form input[type="text"] { width: 450px; }
+textarea { width: 600px; }
+.tabs .pane { width: 624px; }
+
+body { margin: 10px auto; font-family: sans-serif; }
 body { background: #3c64aa url('/images/blueprint_wide.jpg') repeat-x top center; }
 
 h1 { color: #fff; }
@@ -13,9 +19,8 @@ h1 a { color: inherit; text-decoration: none; }
 input[type="text"] { padding: 5px; font-size: 14px; border: 1px #ccc solid; }
 
 .request.form select { font-size: 20px; }
-.request.form input[type="text"] { width: 450px;  }
 .request.form label { color: #aaa; font-size: 10px; cursor: pointer; }
-textarea { width: 600px; border: 1px #ccc solid; }
+textarea { border: 1px #ccc solid; }
 .request.submit { text-align: center; padding: 5px 0; margin: 10px 0; border: 1px #ccc; border-style: solid none; }
 .request.submit input { font-size: 26px; }
 
@@ -25,7 +30,7 @@ textarea { width: 600px; border: 1px #ccc solid; }
 .tabs .tab.selected a { border-bottom: solid 1px; cursor: default; }
 .tabs .pane { display:none; }
 .tabs .pane.selected { display: block; }
-.tabs .pane { width: 624px; overflow: auto; padding: 10px; border: 1px solid; border-top-style: none ;}
+.tabs .pane { overflow: auto; padding: 10px; border: 1px solid; border-top-style: none ;}
 /* tab colours */
 .tabs ul { border-bottom-color: #ccc; }
 .tabs .tab a { border-color: #ccc; color: #3c64aa; }
