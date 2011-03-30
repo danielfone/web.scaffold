@@ -73,6 +73,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    yajl-ruby (0.7.8)
 
 PLATFORMS
   ruby
@@ -84,3 +85,4 @@ DEPENDENCIES
   jquery-rails
   rails (= 3.0.1)
   sqlite3-ruby
+  yajl-ruby
