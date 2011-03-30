@@ -2,8 +2,6 @@ class Request < ActiveRecord::Base
 
   attr_accessor :data_keys, :data_values
 
-  serialize :sent_headers
-
   before_validation :default_url_protocol
   before_save :do_request
 
@@ -14,8 +12,8 @@ class Request < ActiveRecord::Base
   def do_request
     @curl = Curl::Easy.new(url)
     @curl.follow_location = redirects?
-    self.sent_headers = []
-    @curl.on_debug { |type, data| self.sent_headers << data + "\n" if type == Curl::CURLINFO_HEADER_OUT }
+    self.sent_headers = ''
+    @curl.on_debug { |type, data| self.sent_headers += data if type == Curl::CURLINFO_HEADER_OUT }
 
     execute_curl
 

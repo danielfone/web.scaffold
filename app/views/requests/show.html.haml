@@ -8,8 +8,8 @@
     %li.tab= link_to 'Request', '#request'
     %li.tab.selected= link_to 'Response', '#response'
 
-  #request.pane
-    = pretty_print_requests(@request.sent_headers).html_safe
-  #response.pane.selected
-    = pretty_print_headers(@request.response_headers).html_safe
-    = pretty_print(@request.response_type, @request.response_body).html_safe
+  #request.pane.highlight
+    %pre= pretty_print_headers @request.sent_headers
+  #response.pane.highlight.selected
+    %pre= pretty_print_headers @request.response_headers
+    %pre= pretty_print_body @request.response_type, @request.response_body

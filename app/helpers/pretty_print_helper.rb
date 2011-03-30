@@ -1,14 +1,14 @@
 module PrettyPrintHelper
   def colorize(hash = {})
     tokens  = CodeRay.scan(hash.values.first, hash.keys.first)
-    colored = tokens.html.div.sub('CodeRay', 'highlight')
+    colored = tokens.html#.div.sub('CodeRay', 'highlight')
     colored.gsub(/(https?:\/\/[^< "']+)/, '<a href="\1" target="_blank">\1</a>')
   end
 
-  def pretty_print(type, content)
+  def pretty_print_body(type, content)
     type = type.to_s
 
-    if type =~ /json|javascript/
+    formatted = if type =~ /json|javascript/
       pretty_print_json(content)
     elsif type == 'js'
       pretty_print_js(content)
@@ -19,6 +19,8 @@ module PrettyPrintHelper
     else
       content.inspect
     end
+
+    formatted.html_safe
   end
 
   def pretty_print_json(content)
@@ -37,20 +39,20 @@ module PrettyPrintHelper
     colorize :xml => out.string
   end
 
-  def pretty_print_headers(content)
-    lines = content.split("\n").map do |line|
-      if line =~ /^(.+?):(.+)$/
-        "<span class='nt'>#{$1}</span>:<span class='s'>#{$2}</span>"
-      else
-        "<span class='nf'>#{line}</span>"
-      end
+  def format_header(header)
+    if header =~ /^(.+?):(.+)$/
+      "<span class='nt'>#{$1}</span>:<span class='s'>#{$2.chomp}</span>\n"
+    else
+      "<span class='nf'>#{header}</span>"
     end
+  end
 
-    "<div class='highlight'><pre>#{lines.join}</pre></div>"
+  def pretty_print_headers(headers)
+    headers.collect { |h| format_header h }.join.html_safe
   end
 
   # accepts an array of request headers and formats them
   def pretty_print_requests(requests = [], fields = [])
-    headers = requests.collect { |request| pretty_print_headers request + "\n\n\n" }.join + fields.join('&')
+    headers = requests.collect { |request| pretty_print_headers request }.join + fields.collect { |key, value| "#{key}=#{value}" }.join('&')
   end
 end
